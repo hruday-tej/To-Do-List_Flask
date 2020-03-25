@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do list</title>
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <div class="wrapper">
+        <form action="{{ url_for('add') }}" method="POST">
+        
+        <input type="text" name="todoitem" id="" placeholder="Enter new Task">
+        <input type="submit" name="" id="" value="add task">
+
+        </form>
+
+    </div>
+    <div class="list">
+        <h2>Incomplete Items</h2>
+        <ul>
+            {% for todo in incomplete %}
+            
+            <li style="font-size: large;">{{ todo.text }} <a href="{{ url_for('complete', id=todo.id) }}">Mark as completed</a></li>
+            {% endfor %}
+        </ul>
+        <h2>Completed Items</h2>
+        <ul>
+            {% for todo in complete %}
+            
+            <li style="font-size: large;">{{ todo.text }} </li>
+            {% endfor %}
+        </ul>
+        
+
+    </div>
+    <!-- <div class="mdc-switch">
+        <div class="mdc-switch__track"></div>
+        <div class="mdc-switch__thumb-underlay">
+          <div class="mdc-switch__thumb"></div>
+          <input type="checkbox" id="basic-switch" class="mdc-switch__native-control" role="switch" aria-checked="false">
+        </div>
+      </div>
+      <label for="basic-switch">off/on</label> -->
+</body>
+</html>
